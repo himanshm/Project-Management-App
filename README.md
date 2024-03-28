@@ -36,10 +36,12 @@
 <input className="w-64 px-2 py-1 rounded-sm bg-stone-200" />
 <button className="text-stone-700 hover:text-stone-950">...</button>
 
-
-
 <ul className="mt-8">...</ul>
 <button className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800">...</button>
+
+
+
+
 <div className="w-[35rem] mt-16">...</div>
 <header className="pb-4 mb-4 border-b-2 border-stone-300">...</header>
 <div className="flex items-center justify-between">...</div>

@@ -33,18 +33,19 @@ function App() {
   }
 
   function handleAddProject(projectData: Project) {
+    const projectId = generateSimpleGUID();
     const newProject: Project = {
       ...projectData,
-      id: generateSimpleGUID(),
+      id: projectId,
     };
     setProjectsState((prevState) => {
       return {
         ...prevState,
+        selectedprojectId: undefined, // Go back to the fallback screen after clicking save
         projects: [...prevState.projects, newProject],
       };
     });
   }
-  console.log(projectsState);
 
   let content: ReactNode;
 
@@ -56,7 +57,10 @@ function App() {
 
   return (
     <main className='h-screen my-8 flex gap-8'>
-      <ProjectSidebar onStartAddProject={handleStartAddProject} />
+      <ProjectSidebar
+        onStartAddProject={handleStartAddProject}
+        projects={projectsState.projects}
+      />
       {content}
     </main>
   );
