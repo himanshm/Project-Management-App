@@ -34,12 +34,6 @@
 <h2 className="text-xl font-bold text-stone-700 my-4">...</h2>
 <p className="text-stone-600 mb-4">...</p>
 
-
-
-
-
-
-
 <div className="w-[35rem] mt-16">...</div>
 <header className="pb-4 mb-4 border-b-2 border-stone-300">...</header>
 <div className="flex items-center justify-between">...</div>
@@ -47,6 +41,7 @@
 <button className="text-stone-600 hover:text-stone-950">...</button>
 <p className="mb-4 text-stone-400">...</p>
 <p className="text-stone-600 whitespace-pre-wrap">...</p>
+
 <h2 className="text-2xl font-bold text-stone-700 mb-4">Tasks</h2>
 <p className="text-stone-800 my-4">...</p>
 <ul className="p-4 mt-8 rounded-md bg-stone-100">...</ul>

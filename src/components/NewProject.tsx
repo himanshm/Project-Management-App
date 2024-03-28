@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import Input from './Input.tsx';
 import { Project } from '../App.tsx';
 import Modal, { type ModalRef } from './Modal.tsx';
+import { generateSimpleGUID } from '../util/generateGUID.ts';
 
 type NewProjectProps = {
   onAddProject: (projectData: Project) => void;
@@ -40,6 +41,7 @@ function NewProject({ onAddProject, onCancelProject }: NewProjectProps) {
 
     // Lift the state up to the app component to send the collected input data there to be used in other components
     onAddProject({
+      id: generateSimpleGUID(),
       title: enteredTitle,
       description: enteredDescription,
       dueDate: enteredDueDate,

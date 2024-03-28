@@ -2,10 +2,11 @@ import { ReactNode, useState } from 'react';
 import NoProjectSelected from './components/NoProjectSelected.tsx';
 import ProjectSidebar from './components/ProjectSidebar.tsx';
 import NewProject from './components/NewProject.tsx';
-import { generateSimpleGUID } from './util/generateGUID.ts';
+import SelectedProject from './components/SelectedProject.tsx';
+// import { generateSimpleGUID } from './util/generateGUID.ts';
 
 export interface Project {
-  id?: string;
+  id: string;
   title: string;
   description: string;
   dueDate: Date;
@@ -23,29 +24,32 @@ const initialProjectsState: ProjectsState = {
 function App() {
   const [projectsState, setProjectsState] = useState(initialProjectsState);
 
-  function handleStartAddProject() {
+  function updateProjectState(selectedprojectId: string | undefined | null) {
     setProjectsState((prevState) => {
       return {
         ...prevState,
-        selectedprojectId: null,
+        selectedprojectId,
       };
     });
+  }
+
+  function handleSelectProject(id: string) {
+    updateProjectState(id);
+  }
+
+  function handleStartAddProject() {
+    updateProjectState(null);
   }
 
   function handleCancelAddProject() {
-    setProjectsState((prevState) => {
-      return {
-        ...prevState,
-        selectedprojectId: undefined,
-      };
-    });
+    updateProjectState(undefined);
   }
 
   function handleAddProject(projectData: Project) {
-    const projectId = generateSimpleGUID();
+    // const projectId = generateSimpleGUID();
     const newProject: Project = {
       ...projectData,
-      id: projectId,
+      // id: projectId,
     };
     setProjectsState((prevState) => {
       return {
@@ -56,7 +60,15 @@ function App() {
     });
   }
 
+  const selectedProject = projectsState.projects.find(
+    (project) => project.id === projectsState.selectedprojectId
+  );
+
   let content: ReactNode;
+
+  if (selectedProject) {
+    content = <SelectedProject project={selectedProject} />;
+  }
 
   if (projectsState.selectedprojectId === null) {
     content = (
@@ -72,8 +84,10 @@ function App() {
   return (
     <main className='h-screen my-8 flex gap-8'>
       <ProjectSidebar
+        onSelectProject={handleSelectProject}
         onStartAddProject={handleStartAddProject}
         projects={projectsState.projects}
+        selectedProjectId={projectsState.selectedprojectId}
       />
       {content}
     </main>
