@@ -22,10 +22,6 @@
 <p className="text-stone-400 mb-4">...</p>
 <p className="mt-8">...</p>
 
-<div className="flex items-center gap-4">
-<input className="w-64 px-2 py-1 rounded-sm bg-stone-200" />
-<button className="text-stone-700 hover:text-stone-950">...</button>
-
 <ul className="mt-8">...</ul>
 <button className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800">...</button>
 
@@ -47,6 +43,11 @@
 <ul className="p-4 mt-8 rounded-md bg-stone-100">...</ul>
 <li className="flex justify-between my-4">...</li>
 <button className="text-stone-700 hover:text-red-500">...</button>
+
+<div className="flex items-center gap-4">
+<input className="w-64 px-2 py-1 rounded-sm bg-stone-200" />
+<button className="text-stone-700 hover:text-stone-950">...</button>
+
 ```
 
 `isNaN(enteredDueDate.getTime())` checks if the resulting Date object is valid. The `getTime()` method returns the numeric value corresponding to the time for the specified date according to universal time. If the date string is invalid, `getTime()` returns `NaN`, and `isNaN()` returns `true`.

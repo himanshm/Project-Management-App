@@ -1,4 +1,5 @@
 import { Project } from '../App';
+import Tasks from './Tasks';
 
 type SelectedProjectProps = {
   project: Project;
@@ -31,7 +32,7 @@ function SelectedProject({ project, onDelete }: SelectedProjectProps) {
           {project.description}
         </p>
       </header>
-      TASKS
+      <Tasks />
     </div>
   );
 }
