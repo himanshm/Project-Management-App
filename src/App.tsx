@@ -3,7 +3,7 @@ import NoProjectSelected from './components/NoProjectSelected.tsx';
 import ProjectSidebar from './components/ProjectSidebar.tsx';
 import NewProject from './components/NewProject.tsx';
 import SelectedProject from './components/SelectedProject.tsx';
-// import { generateSimpleGUID } from './util/generateGUID.ts';
+import { generateSimpleGUID } from './util/generateGUID.ts';
 
 export interface Project {
   id: string;
@@ -12,12 +12,21 @@ export interface Project {
   dueDate: Date;
 }
 
+export interface Task {
+  task: string;
+  projectId: string | null | undefined;
+
+  id: string;
+}
+
 interface ProjectsState {
   projects: Project[];
+  tasks: Task[];
   selectedprojectId: string | undefined | null; // Either stores the id of the project that was selected, null if we want to add a new project, undefined if we're not adding a new project and also if we did not select any project
 }
 const initialProjectsState: ProjectsState = {
   projects: [],
+  tasks: [],
   selectedprojectId: undefined,
 };
 
@@ -33,6 +42,23 @@ function App() {
     });
   }
 
+  function handleAddTask(task: string) {
+    setProjectsState((prevState) => {
+      const taskId = generateSimpleGUID();
+      const newTask: Task = {
+        task: task,
+        projectId: prevState.selectedprojectId,
+        id: taskId,
+      };
+      return {
+        ...prevState,
+        tasks: [...prevState.tasks, newTask],
+      };
+    });
+  }
+
+  function handleDeleteTask() {}
+
   function handleSelectProject(id: string) {
     updateProjectState(id);
   }
@@ -46,12 +72,12 @@ function App() {
   }
 
   function handleAddProject(projectData: Project) {
-    // const projectId = generateSimpleGUID();
-    const newProject: Project = {
-      ...projectData,
-      // id: projectId,
-    };
     setProjectsState((prevState) => {
+      // const projectId = generateSimpleGUID();
+      const newProject: Project = {
+        ...projectData,
+        // id: projectId,
+      };
       return {
         ...prevState,
         selectedprojectId: undefined, // Go back to the fallback screen after clicking save
@@ -83,6 +109,9 @@ function App() {
       <SelectedProject
         project={selectedProject}
         onDelete={handleDeleteProject}
+        onAddTask={handleAddTask}
+        onDeleteTask={handleDeleteTask}
+        tasks={projectsState.tasks}
       />
     );
   }

@@ -1,12 +1,21 @@
-import { Project } from '../App';
+import { Project, Task } from '../App';
 import Tasks from './Tasks';
 
 type SelectedProjectProps = {
   project: Project;
+  tasks: Task[];
   onDelete: () => void;
+  onAddTask: (task: string) => void; // First layer of prop drilling
+  onDeleteTask: () => void; // First layer of prop drilling
 };
 
-function SelectedProject({ project, onDelete }: SelectedProjectProps) {
+function SelectedProject({
+  project,
+  tasks,
+  onDelete,
+  onAddTask,
+  onDeleteTask,
+}: SelectedProjectProps) {
   const formattedDate = project.dueDate.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -32,7 +41,7 @@ function SelectedProject({ project, onDelete }: SelectedProjectProps) {
           {project.description}
         </p>
       </header>
-      <Tasks />
+      <Tasks tasks={tasks} onAddTask={onAddTask} onDeleteTask={onDeleteTask} />
     </div>
   );
 }
