@@ -16,6 +16,13 @@
 <label className="text-sm font-bold uppercase text-stone-500">...</label>
 <input className="w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600" />
 
+<div className="mt-24 text-center w-2/3">
+<img className="w-16 h-16 object-contain mx-auto" />
+<h2 className="text-xl font-bold text-stone-500 my-4">...</h2>
+<p className="text-stone-400 mb-4">...</p>
+<p className="mt-8">...</p>
+
+
 
 
 
@@ -28,11 +35,9 @@
 <div className="flex items-center gap-4">
 <input className="w-64 px-2 py-1 rounded-sm bg-stone-200" />
 <button className="text-stone-700 hover:text-stone-950">...</button>
-<div className="mt-24 text-center w-2/3">
-<img className="w-16 h-16 object-contain mx-auto" />
-<h2 className="text-xl font-bold text-stone-500 my-4">...</h2>
-<p className="text-stone-400 mb-4">...</p>
-<p className="mt-8">...</p>
+
+
+
 <ul className="mt-8">...</ul>
 <button className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800">...</button>
 <div className="w-[35rem] mt-16">...</div>
