@@ -12,6 +12,9 @@ function NewTask({ onAdd }: NewTaskProps) {
   }
 
   function handleTask() {
+    if (enteredTask.trim() === '') {
+      return;
+    }
     onAdd(enteredTask);
     setEnteredTask('');
   }

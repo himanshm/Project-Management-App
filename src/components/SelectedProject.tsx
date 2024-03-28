@@ -6,7 +6,7 @@ type SelectedProjectProps = {
   tasks: Task[];
   onDelete: () => void;
   onAddTask: (task: string) => void; // First layer of prop drilling
-  onDeleteTask: () => void; // First layer of prop drilling
+  onDeleteTask: (id: string) => void; // First layer of prop drilling
 };
 
 function SelectedProject({

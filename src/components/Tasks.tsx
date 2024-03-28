@@ -4,7 +4,7 @@ import { Task } from '../App';
 type TasksProps = {
   tasks: Task[];
   onAddTask: (task: string) => void; // Second layer of prop drilling
-  onDeleteTask: () => void; // Second layer of prop drilling
+  onDeleteTask: (id: string) => void; // Second layer of prop drilling
 };
 
 function Tasks({ tasks, onAddTask, onDeleteTask }: TasksProps) {
@@ -23,7 +23,7 @@ function Tasks({ tasks, onAddTask, onDeleteTask }: TasksProps) {
             <li key={task.id} className='flex justify-between my-4'>
               <span>{task.task}</span>
               <button
-                onClick={onDeleteTask}
+                onClick={() => onDeleteTask(task.id)}
                 className='text-stone-700 hover:text-red-500'
               >
                 Clear
