@@ -22,9 +22,12 @@
 <p className="text-stone-400 mb-4">...</p>
 <p className="mt-8">...</p>
 
+<div className="flex items-center gap-4">
+<input className="w-64 px-2 py-1 rounded-sm bg-stone-200" />
+<button className="text-stone-700 hover:text-stone-950">...</button>
 
-
-
+<ul className="mt-8">...</ul>
+<button className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800">...</button>
 
 <dialog className="backdrop:bg-stone-900/90 p-4 rounded-md shadow-md">...</dialog>
 <form className="mt-4 text-right">...</form>
@@ -32,12 +35,7 @@
 <p className="text-stone-600 mb-4">...</p>
 
 
-<div className="flex items-center gap-4">
-<input className="w-64 px-2 py-1 rounded-sm bg-stone-200" />
-<button className="text-stone-700 hover:text-stone-950">...</button>
 
-<ul className="mt-8">...</ul>
-<button className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800">...</button>
 
 
 

@@ -1,6 +1,8 @@
 import { createPortal } from 'react-dom';
 import { forwardRef, ReactNode, useImperativeHandle, useRef } from 'react';
 
+import Button from './Button.tsx';
+
 type ModalProps = {
   children?: ReactNode;
   buttonCaption: string;
@@ -32,10 +34,13 @@ const Modal = forwardRef<ModalRef, ModalProps>(
     }
 
     return createPortal(
-      <dialog ref={dialog}>
+      <dialog
+        ref={dialog}
+        className='backdrop:bg-stone-900/90 p-4 rounded-md shadow-md'
+      >
         {children}
-        <form method='dialog'>
-          <button>{buttonCaption}</button>
+        <form method='dialog' className='mt-4 text-right'>
+          <Button>{buttonCaption}</Button>
         </form>
       </dialog>,
       modalRoot
