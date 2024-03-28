@@ -53,3 +53,12 @@
 <li className="flex justify-between my-4">...</li>
 <button className="text-stone-700 hover:text-red-500">...</button>
 ```
+
+`isNaN(enteredDueDate.getTime())` checks if the resulting Date object is valid. The `getTime()` method returns the numeric value corresponding to the time for the specified date according to universal time. If the date string is invalid, `getTime()` returns `NaN`, and `isNaN()` returns `true`.
+
+```
+ if (isNaN(enteredDueDate.getTime())) {
+      console.error('Invalid date entered.');
+      return;
+    }
+```
