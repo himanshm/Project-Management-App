@@ -60,6 +60,18 @@ function App() {
     });
   }
 
+  function handleDeleteProject() {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        selectedprojectId: undefined,
+        projects: prevState.projects.filter(
+          (project) => project.id !== prevState.selectedprojectId
+        ),
+      };
+    });
+  }
+
   const selectedProject = projectsState.projects.find(
     (project) => project.id === projectsState.selectedprojectId
   );
@@ -67,7 +79,12 @@ function App() {
   let content: ReactNode;
 
   if (selectedProject) {
-    content = <SelectedProject project={selectedProject} />;
+    content = (
+      <SelectedProject
+        project={selectedProject}
+        onDelete={handleDeleteProject}
+      />
+    );
   }
 
   if (projectsState.selectedprojectId === null) {
