@@ -1,15 +1,12 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import Input from './Input.tsx';
-import { Project } from '../App.tsx';
 import Modal, { type ModalRef } from './Modal.tsx';
 import { generateSimpleGUID } from '../util/generateGUID.ts';
+import { ProjectContext } from '../context/ProjectContext.tsx';
 
-type NewProjectProps = {
-  onAddProject: (projectData: Project) => void;
-  onCancelProject: () => void;
-};
+function NewProject() {
+  const { addProject, cancelAddProject } = useContext(ProjectContext);
 
-function NewProject({ onAddProject, onCancelProject }: NewProjectProps) {
   const modal = useRef<ModalRef>(null);
   const title = useRef<HTMLInputElement>(null);
   const description = useRef<HTMLTextAreaElement>(null);
@@ -40,7 +37,7 @@ function NewProject({ onAddProject, onCancelProject }: NewProjectProps) {
     }
 
     // Lift the state up to the app component to send the collected input data there to be used in other components
-    onAddProject({
+    addProject({
       id: generateSimpleGUID(),
       title: enteredTitle,
       description: enteredDescription,
@@ -64,7 +61,7 @@ function NewProject({ onAddProject, onCancelProject }: NewProjectProps) {
           <li>
             <button
               className='text-stone-800 hover:text-stone-950'
-              onClick={onCancelProject}
+              onClick={cancelAddProject}
             >
               Cancel
             </button>

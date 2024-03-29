@@ -1,10 +1,8 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
+import { ProjectContext } from '../context/ProjectContext';
 
-type NewTaskProps = {
-  onAdd: (task: string) => void;
-};
-
-function NewTask({ onAdd }: NewTaskProps) {
+function NewTask() {
+  const { addTask } = useContext(ProjectContext);
   const [enteredTask, setEnteredTask] = useState<string>('');
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -15,7 +13,7 @@ function NewTask({ onAdd }: NewTaskProps) {
     if (enteredTask.trim() === '') {
       return;
     }
-    onAdd(enteredTask);
+    addTask(enteredTask);
     setEnteredTask('');
   }
   return (

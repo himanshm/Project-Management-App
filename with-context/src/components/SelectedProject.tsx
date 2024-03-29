@@ -1,21 +1,13 @@
-import { Project, Task } from '../App';
+import { useContext } from 'react';
+import { Project, ProjectContext } from '../context/ProjectContext';
 import Tasks from './Tasks';
 
 type SelectedProjectProps = {
   project: Project;
-  tasks: Task[];
-  onDelete: () => void;
-  onAddTask: (task: string) => void; // First layer of prop drilling
-  onDeleteTask: (id: string) => void; // First layer of prop drilling
 };
 
-function SelectedProject({
-  project,
-  tasks,
-  onDelete,
-  onAddTask,
-  onDeleteTask,
-}: SelectedProjectProps) {
+function SelectedProject({ project }: SelectedProjectProps) {
+  const { deleteProject } = useContext(ProjectContext);
   const formattedDate = project.dueDate.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -31,7 +23,7 @@ function SelectedProject({
           </h1>
           <button
             className='text-stone-600 hover:text-stone-950'
-            onClick={onDelete}
+            onClick={deleteProject}
           >
             Delete
           </button>
@@ -41,7 +33,7 @@ function SelectedProject({
           {project.description}
         </p>
       </header>
-      <Tasks tasks={tasks} onAddTask={onAddTask} onDeleteTask={onDeleteTask} />
+      <Tasks />
     </div>
   );
 }

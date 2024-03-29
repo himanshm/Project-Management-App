@@ -1,11 +1,11 @@
+import { useContext } from 'react';
 import noProjectImg from '../assets/no-projects.png';
+
 import Button from './Button.tsx';
+import { ProjectContext } from '../context/ProjectContext.tsx';
 
-type NoProjectSelectedProps = {
-  onStartAddProject: () => void;
-};
-
-function NoProjectSelected({ onStartAddProject }: NoProjectSelectedProps) {
+function NoProjectSelected() {
+  const { startAddProject } = useContext(ProjectContext);
   return (
     <div className='mt-24 text-center w-2/3'>
       <img
@@ -20,7 +20,7 @@ function NoProjectSelected({ onStartAddProject }: NoProjectSelectedProps) {
         Select a project or get started with a new one!
       </p>
       <p className='mt-8'>
-        <Button onClick={onStartAddProject}>Create New Project</Button>
+        <Button onClick={startAddProject}>Create New Project</Button>
       </p>
     </div>
   );

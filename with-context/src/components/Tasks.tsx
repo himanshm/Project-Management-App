@@ -1,17 +1,13 @@
+import { useContext } from 'react';
+import { ProjectContext } from '../context/ProjectContext';
 import NewTask from './NewTask';
-import { Task } from '../App';
 
-type TasksProps = {
-  tasks: Task[];
-  onAddTask: (task: string) => void; // Second layer of prop drilling
-  onDeleteTask: (id: string) => void; // Second layer of prop drilling
-};
-
-function Tasks({ tasks, onAddTask, onDeleteTask }: TasksProps) {
+function Tasks() {
+  const { tasks, deleteTask } = useContext(ProjectContext);
   return (
     <section>
       <h2 className='text-2xl font-bold text-stone-700 mb-4'>Tasks</h2>
-      <NewTask onAdd={onAddTask} />
+      <NewTask />
       {tasks.length === 0 && (
         <p className='text-stone-800 my-4'>
           This project does not have any tasks yet!
@@ -23,7 +19,7 @@ function Tasks({ tasks, onAddTask, onDeleteTask }: TasksProps) {
             <li key={task.id} className='flex justify-between my-4'>
               <span>{task.task}</span>
               <button
-                onClick={() => onDeleteTask(task.id)}
+                onClick={() => deleteTask(task.id)}
                 className='text-stone-700 hover:text-red-500'
               >
                 Clear
